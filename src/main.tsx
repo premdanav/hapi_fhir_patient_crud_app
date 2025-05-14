@@ -1,10 +1,22 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.tsx'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import App from "./App.tsx";
+import { getTheme } from "./theme/index.ts";
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import { Provider } from "react-redux";
+import { store } from "./redux/store.ts";
 
-createRoot(document.getElementById('root')!).render(
+const mode = "light";
+const theme = getTheme(mode);
+
+createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <App />
-  </StrictMode>,
-)
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <App />
+      </ThemeProvider>
+    </Provider>
+  </StrictMode>
+);
