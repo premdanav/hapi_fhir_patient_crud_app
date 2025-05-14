@@ -1,54 +1,35 @@
-# React + TypeScript + Vite
+# Patient Management Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+As part of a healthcare software tech entusiast, This is a
+vite-react-ts Patient Management Dashboard for clinical staff.
+This application integrates with the HAPI FHIR public server
+and allow users to perform CRUD operations on Patient records in compliance
+with the FHIR R4 standard.
 
-Currently, two official plugins are available:
+🏗️ Features to Implement
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. List Patients
+   Fetch and display a paginated list of patients from https://hapi.fhir.org/baseR4/Patient
+   Display key patient fields: Name, Gender, Birth Date, and ID
+   Add a search bar to filter patients by name
 
-## Expanding the ESLint configuration
+2. Create New Patient
+   Form to create a new patient
+   Required fields:
+   First Name, Last Name
+   Gender (Dropdown)
+   Birth Date (Date input)
+   On submission, send a POST request to the FHIR server
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+3. Update Patient
+   Edit an existing patient’s information
+   Prefill the form with existing values by fetching GET /Patient/{id}
+   On save, send a PUT request to the server
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+4. Delete Patient
+   Add a Delete button in the patient list
+   Use DELETE /Patient/{id} to remove the record from the FHIR server
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+5. Patient Details View
+   On clicking a patient's name, show a detailed view
+   (name, gender, birth date, address, etc.)
