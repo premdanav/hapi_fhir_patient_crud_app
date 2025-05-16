@@ -7,7 +7,7 @@ interface LogoutButtonProps {
 
 const LogoutButton = ({ onClick }: LogoutButtonProps) => {
   return (
-    <Button variant="contained" color="error" sx={{ mt: 3 }} onClick={onClick}>
+    <Button variant="contained" color="error" onClick={onClick}>
       Logout
     </Button>
   );
