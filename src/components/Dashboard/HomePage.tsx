@@ -1,5 +1,6 @@
 // components/Dashboard.tsx
 import { Box, Typography } from "@mui/material";
+import PatientListContainer from "./PatientListContainer";
 
 const HomePage = () => {
   return (
@@ -8,6 +9,9 @@ const HomePage = () => {
         Patient Dashboard
       </Typography>
       <Typography>Welcome to the dashboard!</Typography>
+      <Box>
+        <PatientListContainer />
+      </Box>
     </Box>
   );
 };
